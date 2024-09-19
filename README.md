@@ -1,7 +1,7 @@
 # CLDN2
 
-* **Developed for:** Salimata
 * **Developed by:** Thomas
+* **Developed for:** Salimata
 * **Team:** Prochiantz
 * **Date:** September 2024
 * **Software:** Macro ImageJ
@@ -16,13 +16,11 @@
      
 ### Plugin description
 
-* Detect astrocytes with Cellpose
-* Compute distance between each cell and its nearest neighbors
-* Compute G-function related spatial distribution index of the population of cells
-* If vessels channel provided:
-  * Detect vessels with median filtering + DoG filtering + thresholding + closing filtering + median filtering
-  * Compute vessels skeleton and provide vessels diameter, length, branches number, and junctions number
-  * Compute distance between each cell and its nearest vessel
+. Detect Choroid Plexus via Alexa 488 paired with CLDN2 on P90 mouse
+. Using median filtering + Subtract Background and Triangle threshold 
+. Computel the area + mean + StdDev + min + max 
+. in all the ROI detected and register a mask and a table in a .csv
+. All outputs are normalized based on average z projection minus median z projection 
 
 
 ### Dependencies
