@@ -9,18 +9,15 @@
 
 ### Images description
 
-3D images taken on an spinning-disk microscope.
+3D images of choroid plexus taken on an spinning-disk microscope.
 
 1 channel: *488:* CLDN2.
      
 ### Plugin description
 
-* Sum projection of the stack
-* Segment choroid plexus using median filtering + Subtract Background and Triangle threshold
-* Computel the area + mean + StdDev + min + max
-* in all the ROI detected and register a mask and a table in a .csv
-* All outputs are normalized based on average z projection minus median z projection 
-
+* Segment choroid plexus using stack sum projection + background subtraction + median filtering + Triangle thresholding
+* Estimate background noise as median intensity of stack minimum projection
+* For each obtained ROI, compute area + mean intensity measured on the background-corrected stack average projection
 
 ### Dependencies
 
