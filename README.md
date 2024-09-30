@@ -25,4 +25,4 @@ None
 
 ### Version history
 
-Version 1 released on September 26, 2024.
+Version 1 released on September 30, 2024.
