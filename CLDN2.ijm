@@ -21,13 +21,13 @@ list = getFileList(inputDir);
 
 // Create a results file and write headers in it
 fileResults = File.open(outDir + "results.csv");
-print(fileResults,"Image name, Background noise, ROI ID, Area, Background-corrected mean intensity\n");
+print(fileResults,"Image name, Background noise, ROI ID, Area (µm2), Background-corrected mean intensity\n");
 
 // Loop through all files with .TIF extension 
 for (i = 0; i < list.length; i++) {
-    if (endsWith(list[i], ".TIF")) {
+    if (endsWith(list[i], ".nd")) {
     	// Open image
-    	open(inputDir + list[i]);
+    	run("Bio-Formats Importer", "open=["+inputDir + list[i]+"] autoscale color_mode=Default specify_range split_channels view=Hyperstack stack_order=XYCZT c_begin=2 c_end=2 c_step=1");
     	rename("rawImage");
     	
     	// Compute image background noise as the median intensity of the stack min projection
@@ -63,7 +63,7 @@ for (i = 0; i < list.length; i++) {
 
 		// Measure and save parameters for each segmented object in results file
 		run("Set Measurements...", "area mean redirect=avgIntensity decimal=3");
-		run("Analyze Particles...", "size=50000-500000 circularity=0.00-0.25 display clear add");
+		run("Analyze Particles...", "size=3000-35000 circularity=0.00-0.25 display clear add");
 		for (r = 0; r < roiManager("count"); r++) {
 			area = getResult("Area", r);
 			mean = getResult("Mean", r);
